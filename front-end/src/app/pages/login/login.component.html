@@ -1,0 +1,36 @@
+<div class="opacity-container"></div>
+<div class="login-container">
+  <mat-card>
+    <app-logo-title></app-logo-title>
+    <div class="login-title">
+      Log in to your account
+    </div>
+    <div class="sign-up">
+      Don't have an account? Sign up
+    </div>
+    <mat-card-content>
+      <form>
+        <ng-container *ngIf="loginType === 'INSURANCE_COMPANY_USER'">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Company name</mat-label>
+            <input matInput placeholder="Company name" required>
+          </mat-form-field>
+        </ng-container>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" type="email" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="Password" required>
+        </mat-form-field>
+        <div class="forgot-password">
+          Forgot password?
+        </div>
+        <button mat-raised-button class="full-width login-button">Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

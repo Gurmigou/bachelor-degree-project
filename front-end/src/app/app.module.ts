@@ -23,6 +23,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {RouterLink, RouterModule} from "@angular/router";
 import {HttpClientModule, HttpParams} from "@angular/common/http";
 import {routes} from "./routes/Routes";
+import {LogoTitleComponent} from "./shared/logo-title/logo-title.component";
 
 @NgModule({
   declarations: [
@@ -31,16 +32,16 @@ import {routes} from "./routes/Routes";
     RegistrationComponent,
     NotFoundComponent,
   ],
-  imports: [
-    BrowserModule, BrowserAnimationsModule,
-    MatCardModule, MatInputModule, MatButtonModule,
-    FormsModule, MatFormFieldModule, MatCheckboxModule,
-    MatSelectModule, ReactiveFormsModule, MatExpansionModule,
-    MatIconModule, MatListModule, MatDatepickerModule,
-    MatNativeDateModule, NgOptimizedImage, MatToolbarModule,
-    MatSidenavModule, RouterLink, HttpClientModule,
-    RouterModule.forRoot(routes)
-  ],
+    imports: [
+        BrowserModule, BrowserAnimationsModule,
+        MatCardModule, MatInputModule, MatButtonModule,
+        FormsModule, MatFormFieldModule, MatCheckboxModule,
+        MatSelectModule, ReactiveFormsModule, MatExpansionModule,
+        MatIconModule, MatListModule, MatDatepickerModule,
+        MatNativeDateModule, NgOptimizedImage, MatToolbarModule,
+        MatSidenavModule, RouterLink, HttpClientModule,
+        RouterModule.forRoot(routes), LogoTitleComponent
+    ],
   providers: [HttpParams],
   bootstrap: [AppComponent],
   exports: [RouterModule]
