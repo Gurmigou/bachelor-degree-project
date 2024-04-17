@@ -24,6 +24,11 @@ import {RouterLink, RouterModule} from "@angular/router";
 import {HttpClientModule, HttpParams} from "@angular/common/http";
 import {routes} from "./routes/Routes";
 import {LogoTitleComponent} from "./shared/logo-title/logo-title.component";
+import {NavBarComponent} from "./shared/nav-bar/nav-bar.component";
+import {MarketComponent} from "./pages/market/market/market.component";
+import {FooterComponent} from "./shared/footer/footer.component";
+import {LookCardComponent} from "./shared/look-card/look-card.component";
+import {StarRatingComponent} from "./shared/star-rating/star-rating.component";
 
 @NgModule({
   declarations: [
@@ -31,17 +36,22 @@ import {LogoTitleComponent} from "./shared/logo-title/logo-title.component";
     LoginComponent,
     RegistrationComponent,
     NotFoundComponent,
+    NavBarComponent,
+    MarketComponent,
+    FooterComponent,
+    LookCardComponent,
+    StarRatingComponent
   ],
-    imports: [
-        BrowserModule, BrowserAnimationsModule,
-        MatCardModule, MatInputModule, MatButtonModule,
-        FormsModule, MatFormFieldModule, MatCheckboxModule,
-        MatSelectModule, ReactiveFormsModule, MatExpansionModule,
-        MatIconModule, MatListModule, MatDatepickerModule,
-        MatNativeDateModule, NgOptimizedImage, MatToolbarModule,
-        MatSidenavModule, RouterLink, HttpClientModule,
-        RouterModule.forRoot(routes), LogoTitleComponent
-    ],
+  imports: [
+    BrowserModule, BrowserAnimationsModule,
+    MatCardModule, MatInputModule, MatButtonModule,
+    FormsModule, MatFormFieldModule, MatCheckboxModule,
+    MatSelectModule, ReactiveFormsModule, MatExpansionModule,
+    MatIconModule, MatListModule, MatDatepickerModule,
+    MatNativeDateModule, NgOptimizedImage, MatToolbarModule,
+    MatSidenavModule, RouterLink, HttpClientModule,
+    RouterModule.forRoot(routes), LogoTitleComponent
+  ],
   providers: [HttpParams],
   bootstrap: [AppComponent],
   exports: [RouterModule]
