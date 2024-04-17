@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  gap: 0.7rem;
+
+  button > img {
+    height: 16px;
+    width: 100%;
+  }
+}
+
+
