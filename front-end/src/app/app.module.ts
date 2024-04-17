@@ -25,7 +25,7 @@ import {HttpClientModule, HttpParams} from "@angular/common/http";
 import {routes} from "./routes/Routes";
 import {LogoTitleComponent} from "./shared/logo-title/logo-title.component";
 import {NavBarComponent} from "./shared/nav-bar/nav-bar.component";
-import {MarketComponent} from "./pages/market/market/market.component";
+import {MarketComponent} from "./pages/market/market.component";
 import {FooterComponent} from "./shared/footer/footer.component";
 import {LookCardComponent} from "./shared/look-card/look-card.component";
 import {StarRatingComponent} from "./shared/star-rating/star-rating.component";
