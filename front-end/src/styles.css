@@ -1,5 +1,9 @@
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 
+* {
+  color: #2D2D2D;
+}
+
 html {
   box-sizing: border-box;
   font-size: 16px;

@@ -29,6 +29,8 @@ import {MarketComponent} from "./pages/market/market/market.component";
 import {FooterComponent} from "./shared/footer/footer.component";
 import {LookCardComponent} from "./shared/look-card/look-card.component";
 import {StarRatingComponent} from "./shared/star-rating/star-rating.component";
+import {SearchComponent} from "./shared/search/search.component";
+import {FilterComponent} from "./shared/filter/filter.component";
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import {StarRatingComponent} from "./shared/star-rating/star-rating.component";
     MarketComponent,
     FooterComponent,
     LookCardComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    SearchComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,

@@ -14,6 +14,10 @@
   margin: 0 auto;
   text-align: center;
 
+  p {
+    color: white;
+  }
+
   .author-name {
     color: #9A9DC5;
   }
