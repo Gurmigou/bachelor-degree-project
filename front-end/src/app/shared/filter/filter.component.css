@@ -1,0 +1,18 @@
+mat-accordion {
+
+  mat-expansion-panel {
+    mat-expansion-panel-header {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .filter-container {
+      mat-list-option {
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+
+

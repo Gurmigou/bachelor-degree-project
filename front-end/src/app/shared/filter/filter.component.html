@@ -1,0 +1,17 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      {{ filterLabel }}
+    </mat-expansion-panel-header>
+    <div class="filter-container">
+      <div class="filter-label">
+
+      </div>
+      <mat-selection-list #shoes>
+        @for (option of options; track option) {
+          <mat-list-option>{{ option }}</mat-list-option>
+        }
+      </mat-selection-list>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
