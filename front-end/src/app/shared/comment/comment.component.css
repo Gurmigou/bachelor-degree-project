@@ -1,0 +1,36 @@
+mat-card {
+  width: 100%;
+  border-radius: 10px;
+
+  mat-card-content {
+    margin: 0.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+
+      .username {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .look-rate-from-user {
+        width: 7rem;
+      }
+    }
+
+    .comment {
+      text-align: justify;
+      font-size: 14px;
+    }
+
+    .date {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 12px;
+    }
+  }
+}
