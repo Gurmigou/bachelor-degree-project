@@ -1,0 +1,8 @@
+.tag-container {
+  width: fit-content;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  background: #E1E1E1;
+}
