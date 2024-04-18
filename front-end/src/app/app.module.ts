@@ -31,6 +31,12 @@ import {LookCardComponent} from "./shared/look-card/look-card.component";
 import {StarRatingComponent} from "./shared/star-rating/star-rating.component";
 import {SearchComponent} from "./shared/search/search.component";
 import {FilterComponent} from "./shared/filter/filter.component";
+import {TagComponent} from "./shared/tag/tag.component";
+import {LookDetailsComponent} from "./pages/look-details/look-details.component";
+import {LookPreviewItemComponent} from "./shared/look-preview/look-preview-item/look-preview-item.component";
+import {LookPreviewComponent} from "./shared/look-preview/look-preview.component";
+import {ImgCarouselComponent} from "./shared/img-carousel/img-carousel.component";
+import {CommentComponent} from "./shared/comment/comment.component";
 
 @NgModule({
   declarations: [
@@ -44,7 +50,13 @@ import {FilterComponent} from "./shared/filter/filter.component";
     LookCardComponent,
     StarRatingComponent,
     SearchComponent,
-    FilterComponent
+    FilterComponent,
+    TagComponent,
+    LookDetailsComponent,
+    LookPreviewItemComponent,
+    LookPreviewComponent,
+    ImgCarouselComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,
@@ -58,7 +70,7 @@ import {FilterComponent} from "./shared/filter/filter.component";
   ],
   providers: [HttpParams],
   bootstrap: [AppComponent],
-  exports: [RouterModule]
+  exports: [RouterModule, TagComponent, StarRatingComponent]
 })
 export class AppModule {
 }
