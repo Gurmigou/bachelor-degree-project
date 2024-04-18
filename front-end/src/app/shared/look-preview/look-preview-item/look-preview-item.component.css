@@ -1,0 +1,19 @@
+.look-preview-item-container {
+  width: 100%;
+
+  .look-type-label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .look-images {
+    display: flex;
+    flex-wrap: wrap;
+
+    img {
+      height: 7rem;
+      width: auto;
+      object-fit: contain;
+    }
+  }
+}

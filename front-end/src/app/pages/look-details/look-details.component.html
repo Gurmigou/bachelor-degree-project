@@ -1,0 +1,55 @@
+<div class="look-details-container">
+  <div class="look-details-left-container">
+    <div class="top-info-container">
+      <div class="left-info">
+        <div class="look-label">
+          Old money summer style
+        </div>
+        <div class="tags-list">
+          <app-tag [label]="'summer'"></app-tag>
+          <app-tag [label]="'old_money'"></app-tag>
+          <app-tag [label]="'classical'"></app-tag>
+        </div>
+      </div>
+      <div class="right-info">
+        <div class="rating">
+          <app-star-rating [rating]="4"></app-star-rating>
+        </div>
+        <div class="designed-by">
+          Designed by <br/> #YehorBukhanets
+        </div>
+      </div>
+    </div>
+    <div class="look-clothes-preview">
+      <app-look-preview></app-look-preview>
+      <app-look-preview></app-look-preview>
+    </div>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          Comments
+        </mat-expansion-panel-header>
+        <div class="comments">
+          <app-comment></app-comment>
+          <app-comment></app-comment>
+          <app-comment></app-comment>
+          <app-comment></app-comment>
+          <app-comment></app-comment>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="look-details-right-container">
+    <div class="right-details-header">
+      <div class="label">
+        Only & Sons Hat
+      </div>
+      <div class="buy-this-good">
+        Buy this good!
+      </div>
+    </div>
+    <div class="details-carousel">
+      <app-img-carousel [images]="['https://content.rozetka.com.ua/goods/images/big/332071922.jpg']"></app-img-carousel>
+    </div>
+  </div>
+</div>

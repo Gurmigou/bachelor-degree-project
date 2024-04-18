@@ -1,0 +1,10 @@
+<div class="look-preview-item-container">
+  <div class="look-type-label">
+    {{typeLabel}}
+  </div>
+  <div class="look-images">
+    @for (image of images; track image) {
+      <img src="{{image}}" alt="clothes">
+    }
+  </div>
+</div>
