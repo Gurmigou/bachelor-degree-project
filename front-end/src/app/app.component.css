@@ -5,7 +5,7 @@
   min-height: 100vh;
 
   .app-main-content {
-    max-width: 90%;
+    width: 95%;
     margin: 3rem auto;
   }
 }
