@@ -47,6 +47,8 @@ import {ImagesUploaderComponent} from "./shared/images-uploader/images-uploader.
 import {
   LookPreviewBuilderItemCardComponent
 } from "./shared/look-preview-builder/app-look-preview-builder-item/look-preview-builder-item-card/look-preview-builder-item-card.component";
+import {MyWorksComponent} from "./pages/my-works/my-works.component";
+import {EditableLookCardComponent} from "./shared/editable-look-card/editable-look-card.component";
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import {
     LookPreviewBuilderComponent,
     AppLookPreviewBuilderItemComponent,
     ImagesUploaderComponent,
-    LookPreviewBuilderItemCardComponent
+    LookPreviewBuilderItemCardComponent,
+    MyWorksComponent,
+    EditableLookCardComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,
@@ -86,7 +90,7 @@ import {
   ],
   providers: [HttpParams],
   bootstrap: [AppComponent],
-  exports: [RouterModule, TagComponent, StarRatingComponent]
+  exports: [RouterModule, TagComponent, StarRatingComponent, LookCardComponent]
 })
 export class AppModule {
 }
