@@ -16,7 +16,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import {MatLine, MatNativeDateModule} from "@angular/material/core";
 import {NgOptimizedImage} from "@angular/common";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -37,6 +37,16 @@ import {LookPreviewItemComponent} from "./shared/look-preview/look-preview-item/
 import {LookPreviewComponent} from "./shared/look-preview/look-preview.component";
 import {ImgCarouselComponent} from "./shared/img-carousel/img-carousel.component";
 import {CommentComponent} from "./shared/comment/comment.component";
+import {LookBuilderComponent} from "./pages/look-builder/look-builder.component";
+import {TagListBuilderComponent} from "./shared/tag-list-builder/tag-list-builder.component";
+import {LookPreviewBuilderComponent} from "./shared/look-preview-builder/look-preview-builder.component";
+import {
+  AppLookPreviewBuilderItemComponent
+} from "./shared/look-preview-builder/app-look-preview-builder-item/app-look-preview-builder-item.component";
+import {ImagesUploaderComponent} from "./shared/images-uploader/images-uploader.component";
+import {
+  LookPreviewBuilderItemCardComponent
+} from "./shared/look-preview-builder/app-look-preview-builder-item/look-preview-builder-item-card/look-preview-builder-item-card.component";
 
 @NgModule({
   declarations: [
@@ -56,7 +66,13 @@ import {CommentComponent} from "./shared/comment/comment.component";
     LookPreviewItemComponent,
     LookPreviewComponent,
     ImgCarouselComponent,
-    CommentComponent
+    CommentComponent,
+    LookBuilderComponent,
+    TagListBuilderComponent,
+    LookPreviewBuilderComponent,
+    AppLookPreviewBuilderItemComponent,
+    ImagesUploaderComponent,
+    LookPreviewBuilderItemCardComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,
@@ -66,7 +82,7 @@ import {CommentComponent} from "./shared/comment/comment.component";
     MatIconModule, MatListModule, MatDatepickerModule,
     MatNativeDateModule, NgOptimizedImage, MatToolbarModule,
     MatSidenavModule, RouterLink, HttpClientModule,
-    RouterModule.forRoot(routes), LogoTitleComponent
+    RouterModule.forRoot(routes), LogoTitleComponent, MatLine
   ],
   providers: [HttpParams],
   bootstrap: [AppComponent],

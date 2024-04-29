@@ -1,0 +1,30 @@
+.tag-list-builder-container {
+  width: 100%;
+  margin: 0.5rem 0;
+
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  mat-form-field {
+    margin-top: 1rem;
+    font-size: 12px;
+
+    input {
+      height: 14px;
+    }
+
+    button {
+      font-size: 12px;
+      font-weight: bold;
+      background: #E1E1E1;
+
+      img {
+        height: 10px;
+        width: 10px;
+      }
+    }
+  }
+}

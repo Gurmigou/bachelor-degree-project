@@ -3,13 +3,13 @@
     <div class="carousel">
       <div class="main-image-wrapper">
         <button mat-icon-button id="prev-img" (click)="previousImage()">
-          <mat-icon>arrow_back</mat-icon>
+          <img src="assets/images/left_arrow.svg" alt="left_arrow">
         </button>
 <!--        <img [src]="'data:image/jpeg;base64,' + images[currentImageIndex]"-->
 <!--             class="main-image" alt="main-image">-->
         <img [src]="images[currentImageIndex]" class="main-image" alt="main-image">
         <button mat-icon-button id="next-img" (click)="nextImage()">
-          <mat-icon>arrow_forward</mat-icon>
+          <img src="assets/images/right_arrow.svg" alt="right_arrow">
         </button>
       </div>
       <div class="thumbnails-grid">

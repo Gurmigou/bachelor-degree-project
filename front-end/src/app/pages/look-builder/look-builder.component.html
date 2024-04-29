@@ -1,0 +1,48 @@
+<div class="look-details-container">
+  <div class="look-details-left-container" [formGroup]="outfitFormGroup">
+    <div class="label">
+      Outfit builder
+    </div>
+    <div class="top-info-container">
+      <mat-form-field>
+        <input matInput placeholder="Outfit name" formControlName="outfitName">
+      </mat-form-field>
+      <div class="tags-list">
+        <app-tag-list-builder (addTagEmitter)="addTag($event)"></app-tag-list-builder>
+      </div>
+    </div>
+    <div class="look-clothes-preview">
+      <div class="label">
+        Add outfit clothes
+      </div>
+      <app-look-preview-builder (onCreateClothesItem)="onCreateClothesItem($event)"
+                                (onDeleteClothesItem)="onDeleteClothesItem($event)"
+                                [outfitClothes]="getOutfitClothes()">
+      </app-look-preview-builder>
+      <div class="save-outfit">
+        <button (click)="onSaveOutfit()" mat-flat-button>Save outfit</button>
+      </div>
+    </div>
+  </div>
+  <div class="look-details-right-container" [formGroup]="elementFormGroup">
+    <div class="right-details-header">
+      <div class="label">
+        Clothes builder: {{ currentElementType }}
+      </div>
+    </div>
+    <div class="look-details-right-container-inner">
+      <mat-form-field>
+        <input matInput placeholder="Clothes element name" formControlName="outfitElementName">
+      </mat-form-field>
+      <app-images-uploader #appImagesUploader (updateImageEmitter)="updateElementImages($event)"></app-images-uploader>
+      <mat-form-field class="example-full-width">
+        <mat-label>Clothes description</mat-label>
+        <textarea formControlName="description" matInput
+                  placeholder="Ex. This clothes is best for summer..."></textarea>
+      </mat-form-field>
+      <div class="save-outfit">
+        <button (click)="onSaveOutfitElement()" mat-flat-button>Save outfit element</button>
+      </div>
+    </div>
+  </div>
+</div>

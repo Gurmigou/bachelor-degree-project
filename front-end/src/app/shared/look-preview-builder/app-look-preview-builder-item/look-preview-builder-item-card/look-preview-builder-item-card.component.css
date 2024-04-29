@@ -1,0 +1,14 @@
+.builder-clothes-item-container {
+
+
+  img {
+    height: 10rem;
+    width: auto;
+    object-fit: contain;
+  }
+
+  mat-card-actions {
+    button {
+    }
+  }
+}

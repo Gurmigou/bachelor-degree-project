@@ -1,0 +1,72 @@
+<div class="look-preview-builder-container">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <button mat-icon-button matSuffix aria-label="Add"
+                (click)="onBuildElement(CLOTHES_ELEMENT_TYPE.HEADDRESS)">+
+        </button>
+        Headdress
+      </mat-expansion-panel-header>
+      <app-app-look-preview-builder-item
+        (onDeleteItemEmitter)="onDeleteItem($event, CLOTHES_ELEMENT_TYPE.HEADDRESS)"
+        [images]="getTitleImages(outfitClothes.headdress)">
+      </app-app-look-preview-builder-item>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <button mat-icon-button matSuffix aria-label="Add"
+                (click)="onBuildElement(CLOTHES_ELEMENT_TYPE.TORSO)">+
+        </button>
+        Torso
+      </mat-expansion-panel-header>
+      <app-app-look-preview-builder-item
+        (onDeleteItemEmitter)="onDeleteItem($event, CLOTHES_ELEMENT_TYPE.TORSO)"
+        [images]="getTitleImages(outfitClothes.torso)">
+      </app-app-look-preview-builder-item>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <button mat-icon-button matSuffix aria-label="Add"
+                (click)="onBuildElement(CLOTHES_ELEMENT_TYPE.LEGWEAR)">+
+        </button>
+        Legwear
+      </mat-expansion-panel-header>
+      <app-app-look-preview-builder-item
+        (onDeleteItemEmitter)="onDeleteItem($event, CLOTHES_ELEMENT_TYPE.LEGWEAR)"
+        [images]="getTitleImages(outfitClothes.legwear)">
+      </app-app-look-preview-builder-item>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <button mat-icon-button matSuffix aria-label="Add"
+                (click)="onBuildElement(CLOTHES_ELEMENT_TYPE.FEET)">+
+        </button>
+        Feet
+      </mat-expansion-panel-header>
+      <app-app-look-preview-builder-item
+        (onDeleteItemEmitter)="onDeleteItem($event, CLOTHES_ELEMENT_TYPE.FEET)"
+        [images]="getTitleImages(outfitClothes.feet)">
+      </app-app-look-preview-builder-item>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <button mat-icon-button matSuffix aria-label="Add"
+                (click)="onBuildElement(CLOTHES_ELEMENT_TYPE.ACCESSORIES)">+
+        </button>
+        Accessories
+      </mat-expansion-panel-header>
+      <app-app-look-preview-builder-item
+        (onDeleteItemEmitter)="onDeleteItem($event, CLOTHES_ELEMENT_TYPE.ACCESSORIES)"
+        [images]="getTitleImages(outfitClothes.accessories)">
+      </app-app-look-preview-builder-item>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

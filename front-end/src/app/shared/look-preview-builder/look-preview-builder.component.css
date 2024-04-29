@@ -1,0 +1,32 @@
+.look-preview-builder-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  mat-accordion {
+    mat-expansion-panel {
+      mat-expansion-panel-header {
+        ::ng-deep .mat-content {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        button {
+          background: #E1E1E1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 20px;
+          width: 20px;
+          font-size: 18px;
+
+          img {
+            height: 10px;
+            width: 10px;
+          }
+        }
+      }
+    }
+  }
+}

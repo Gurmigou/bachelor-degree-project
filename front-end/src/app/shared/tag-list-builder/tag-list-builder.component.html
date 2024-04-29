@@ -1,0 +1,13 @@
+<div class="tag-list-builder-container" [formGroup]="tagFormGroup">
+  <div class="tags-list">
+    @for (tag of getAddedTags(); track tag) {
+      <app-tag label="{{tag}}"></app-tag>
+    }
+  </div>
+  <mat-form-field>
+    <input matInput placeholder="#Write_you_tag" formControlName="newTag">
+    <button mat-icon-button matSuffix aria-label="Add" (click)="onAdd()">
+      <img ngSrc="assets/images/plus.svg" alt="Add" height="800" width="800">
+    </button>
+  </mat-form-field>
+</div>

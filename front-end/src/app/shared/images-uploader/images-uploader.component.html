@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-card-content>
+    <input #fileInput type="file" (change)="onFileDropped($event)" hidden accept=".png,.svg,.jpg,.jpeg" multiple/>
+    <mat-card id="dropZone" (click)="fileInput.click()"
+              (drop)="onFileDropped($event)"
+              (dragover)="onDragOver($event)">
+      <strong> Drag and drop files here or click to upload.</strong>
+    </mat-card>
+    <mat-list>
+      <ng-container *ngFor="let file of files">
+        <div class="list-item">
+          <div class="left">
+            <img [src]="file.preview" alt="{{ file.name }}">
+            <h4 mat-line>{{ file.name }}</h4>
+          </div>
+          <div class="right">
+            <button mat-icon-button (click)="deleteFile(file)">
+              <img src="assets/images/delete.svg" alt="delete">
+            </button>
+          </div>
+        </div>
+      </ng-container>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
