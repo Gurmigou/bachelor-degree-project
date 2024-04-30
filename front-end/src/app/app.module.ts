@@ -49,6 +49,7 @@ import {
 } from "./shared/look-preview-builder/app-look-preview-builder-item/look-preview-builder-item-card/look-preview-builder-item-card.component";
 import {MyWorksComponent} from "./pages/my-works/my-works.component";
 import {EditableLookCardComponent} from "./shared/editable-look-card/editable-look-card.component";
+import {FavoritesComponent} from "./pages/favorites/favorites.component";
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import {EditableLookCardComponent} from "./shared/editable-look-card/editable-lo
     ImagesUploaderComponent,
     LookPreviewBuilderItemCardComponent,
     MyWorksComponent,
-    EditableLookCardComponent
+    EditableLookCardComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,

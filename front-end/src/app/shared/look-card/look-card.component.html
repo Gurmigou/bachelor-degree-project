@@ -1,8 +1,10 @@
 <mat-card>
   <mat-card-content>
-    <button mat-icon-button class="add-to-favorites">
-      <img src="assets/images/heart.svg" alt="">
-    </button>
+    <ng-container *ngIf="favoritesButton">
+      <button mat-icon-button class="add-to-favorites">
+        <img src="assets/images/heart.svg" alt="">
+      </button>
+    </ng-container>
     <div class="image-grid">
       <div class="column-one">
         <div class="top">

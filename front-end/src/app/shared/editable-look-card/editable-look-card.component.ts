@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-editable-look-card',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrl: './editable-look-card.component.css'
 })
 export class EditableLookCardComponent {
+  @Input()
+  deletable: boolean = true;
 
+  @Input()
+  editable: boolean = true;
+
+  @Input()
+  favoritesButton: boolean = true;
 }

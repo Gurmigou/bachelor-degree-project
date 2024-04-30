@@ -1,9 +1,13 @@
 <div class="editable-look-card">
-  <app-look-card></app-look-card>
-  <button mat-icon-button class="delete-btn">
-    <img src="assets/images/delete.svg" alt="">
-  </button>
-  <button mat-icon-button class="edit-svg">
-    <img src="assets/images/edit.svg" alt="">
-  </button>
+  <app-look-card [favoritesButton]="favoritesButton"></app-look-card>
+  <ng-container *ngIf="deletable">
+    <button mat-icon-button class="delete-btn">
+      <img src="assets/images/delete.svg" alt="">
+    </button>
+  </ng-container>
+  <ng-container *ngIf="editable">
+    <button mat-icon-button class="edit-svg">
+      <img src="assets/images/edit.svg" alt="">
+    </button>
+  </ng-container>
 </div>

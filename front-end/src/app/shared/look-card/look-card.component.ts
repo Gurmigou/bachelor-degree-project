@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-look-card',
@@ -6,5 +6,6 @@ import {Component} from '@angular/core';
   styleUrl: './look-card.component.css'
 })
 export class LookCardComponent {
-
+  @Input()
+  favoritesButton: boolean = true;
 }
