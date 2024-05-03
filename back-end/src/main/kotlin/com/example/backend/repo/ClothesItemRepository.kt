@@ -1,9 +1,7 @@
 package com.example.backend.repo
 
 import com.example.backend.model.ClothesItem
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository
-import org.springframework.stereotype.Repository
+import org.springframework.data.repository.reactive.ReactiveCrudRepository
 
-@Repository
-interface ClothesItemRepository : ReactiveMongoRepository<ClothesItem, String> {
+interface ClothesItemRepository : ReactiveCrudRepository<ClothesItem, Long> {
 }

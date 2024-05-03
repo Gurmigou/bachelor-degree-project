@@ -1,15 +1,15 @@
 package com.example.backend.model
 
 import org.springframework.data.annotation.Id
-import org.springframework.data.mongodb.core.mapping.Document
+import org.springframework.data.relational.core.mapping.Table
 import java.time.LocalDateTime
 
-@Document(collection = "users")
+@Table("USERS")
 data class User(
         @Id
-        val id: String? = null,
-        val nickname: String,
-        val email: String,
-        val password: String,
-        val registrationDate: LocalDateTime
+        val id: Long? = null,
+        val nickname: String = "",
+        val email: String = "",
+        val password: String = "",
+        val registrationDate: LocalDateTime = LocalDateTime.now()
 )

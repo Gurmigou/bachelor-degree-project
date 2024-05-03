@@ -1,18 +1,11 @@
-package com.example.backend.model
-
 import org.springframework.data.annotation.Id
-import org.springframework.data.mongodb.core.mapping.Document
+import org.springframework.data.relational.core.mapping.Table
 
-@Document(collection = "outfits")
+@Table("outfits")
 data class Outfit(
         @Id
-        val id: String? = null,
-        val name: String,
-        val tags: List<String>,
-        val headdress: List<ClothesItem>,
-        val torso: List<ClothesItem>,
-        val legwear: List<ClothesItem>,
-        val feet: List<ClothesItem>,
-        val accessories: List<ClothesItem>,
-        val comments: List<Comment>
+        var id: Long? = null,
+        val name: String = "",
+        val tags: List<String> = emptyList(),
+        val userId: Long
 )
