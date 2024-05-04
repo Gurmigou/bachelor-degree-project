@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
 import java.time.LocalDateTime
 
-@Table("USERS")
+@Table("users")
 data class User(
         @Id
         val id: Long? = null,

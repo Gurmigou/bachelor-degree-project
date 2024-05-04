@@ -5,7 +5,7 @@ import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
 import java.time.LocalDateTime
 
-@Table("COMMENTS")
+@Table("comments")
 data class Comment(
         @Id
         val id: Long? = null,

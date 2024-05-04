@@ -5,7 +5,6 @@ import org.springframework.data.relational.core.mapping.Table
 data class Outfit(
         @Id
         var id: Long? = null,
-        val name: String = "",
-        val tags: List<String> = emptyList(),
+        val name: String,
         val userId: Long
 )

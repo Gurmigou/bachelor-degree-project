@@ -13,7 +13,8 @@ export enum CLOTHES_ELEMENT_TYPE {
 export type ClothesElement = {
   clothesElementName: string,
   images: FilePreview[],
-  description: string
+  description: string,
+  type: CLOTHES_ELEMENT_TYPE
 }
 
 export type OutfitClothes = {
@@ -22,7 +23,6 @@ export type OutfitClothes = {
   legwear: ClothesElement[],
   feet: ClothesElement[],
   accessories: ClothesElement[]
-
 }
 
 export type Outfit = {

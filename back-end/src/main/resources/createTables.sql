@@ -1,60 +1,60 @@
-CREATE TABLE CLOTHES_ITEMS
+create table users
 (
-    id          BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name        VARCHAR(255) NOT NULL,
-    description TEXT,
-    type_id     VARCHAR(50)  NOT NULL,
-    outfit_id   BIGINT       NOT NULL,
-    CONSTRAINT fk_outfit
-        FOREIGN KEY (outfit_id) REFERENCES OUTFITS (id)
+    id                bigint auto_increment primary key,
+    nickname          varchar(255) not null,
+    email             varchar(255) not null unique,
+    password          varchar(255) not null,
+    registration_date datetime     not null
 );
-CREATE TABLE CLOTHES_PHOTOS
+
+create table outfits
 (
-    id              BIGINT AUTO_INCREMENT PRIMARY KEY,
-    clothes_item_id BIGINT       NOT NULL,
-    photo           VARCHAR(255) NOT NULL,
-    CONSTRAINT fk_clothes_item
-        FOREIGN KEY (clothes_item_id) REFERENCES CLOTHES_ITEMS (id)
+    id      bigint auto_increment primary key,
+    name    varchar(255) not null,
+    user_id bigint       not null,
+    constraint fk_user_2
+        foreign key (user_id) references users (id)
 );
-CREATE TABLE CLOTHES_ITEM_TYPES
+
+create table clothes_items
 (
-    id          VARCHAR(50) PRIMARY KEY,
-    description VARCHAR(255) NOT NULL
+    id          bigint auto_increment primary key,
+    name        varchar(255) not null,
+    description text,
+    type_id     varchar(50)  not null,
+    outfit_id   bigint       not null,
+    constraint fk_outfit_3
+        foreign key (outfit_id) references outfits (id)
 );
-CREATE TABLE OUTFITS
+
+create table clothes_photos
 (
-    id      BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name    VARCHAR(255) NOT NULL,
-    user_id LONG         NOT NULL,
-    CONSTRAINT fk_user
-        FOREIGN KEY (user_id) REFERENCES USERS (id)
+    id              bigint auto_increment primary key,
+    clothes_item_id bigint       not null,
+    photo           varchar(255) not null,
+    constraint fk_clothes_item_1
+        foreign key (clothes_item_id) references clothes_items (id)
 );
-CREATE TABLE OUTFIT_TAGS
+
+create table outfit_tags
 (
-    id        BIGINT AUTO_INCREMENT PRIMARY KEY,
-    outfit_id BIGINT       NOT NULL,
-    tag       VARCHAR(255) NOT NULL,
-    CONSTRAINT fk_outfit
-        FOREIGN KEY (outfit_id) REFERENCES OUTFITS (id)
+    id        bigint auto_increment primary key,
+    outfit_id bigint       not null,
+    tag       varchar(255) not null,
+    constraint fk_outfit_2
+        foreign key (outfit_id) references outfits (id)
 );
-CREATE TABLE USERS
+
+create table comments
 (
-    id                BIGINT AUTO_INCREMENT PRIMARY KEY,
-    nickname          VARCHAR(255) NOT NULL,
-    email             VARCHAR(255) NOT NULL UNIQUE,
-    password          VARCHAR(255) NOT NULL,
-    registration_date DATETIME     NOT NULL
-);
-CREATE TABLE COMMENTS
-(
-    id               BIGINT AUTO_INCREMENT PRIMARY KEY,
-    user_id          BIGINT      NOT NULL,
-    outfit_id        BIGINT      NOT NULL,
-    comment_text     TEXT        NOT NULL,
-    rate             VARCHAR(50) NOT NULL,
-    date_of_creation DATETIME    NOT NULL,
-    CONSTRAINT fk_user
-        FOREIGN KEY (user_id) REFERENCES USERS (id),
-    CONSTRAINT fk_outfit
-        FOREIGN KEY (outfit_id) REFERENCES OUTFITS (id)
+    id               bigint auto_increment primary key,
+    user_id          bigint      not null,
+    outfit_id        bigint      not null,
+    comment_text     text        not null,
+    rate             varchar(50) not null,
+    date_of_creation datetime    not null,
+    constraint fk_user_1
+        foreign key (user_id) references users (id),
+    constraint fk_outfit_1
+        foreign key (outfit_id) references outfits (id)
 );

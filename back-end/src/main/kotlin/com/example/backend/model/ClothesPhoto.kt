@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
 
-@Table("CLOTHES_PHOTOS")
+@Table("clothes_photos")
 data class ClothesPhoto(
         @Id
         val id: Long? = null,
