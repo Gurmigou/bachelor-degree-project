@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {CLOTHES_ELEMENT_TYPE, ClothesElement, OutfitClothes} from '../../pages/look-builder/look-builder.model';
+import {CLOTHES_ELEMENT_TYPE, ClothesElement, OutfitClothes} from "../app-common-model.model";
 
 @Component({
   selector: 'app-look-preview-builder',

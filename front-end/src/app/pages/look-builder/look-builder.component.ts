@@ -1,9 +1,14 @@
 import {Component, ViewChild} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {FilePreview} from "../../shared/app-common-model.model";
-import {CLOTHES_ELEMENT_TYPE, ClothesElement, Outfit, OutfitClothes} from "./look-builder.model";
+import {
+  CLOTHES_ELEMENT_TYPE,
+  ClothesElement,
+  FilePreview,
+  Outfit,
+  OutfitClothes
+} from "../../shared/app-common-model.model";
 import {ImagesUploaderComponent} from "../../shared/images-uploader/images-uploader.component";
-import {LookBuilderService} from "./look-builder.service";
+import {AppApiService} from "../../service/app-api.service";
 
 @Component({
   selector: 'app-look-builder',
@@ -20,7 +25,7 @@ export class LookBuilderComponent {
   currentElementType: CLOTHES_ELEMENT_TYPE = CLOTHES_ELEMENT_TYPE.NOT_SELECTED;
 
   constructor(private fb: FormBuilder,
-              private lookBuilderService: LookBuilderService) {
+              private appApiService: AppApiService) {
     // Form group for the whole outfit
     this.outfitFormGroup = this.fb.group({
       outfitName: [''],
@@ -59,7 +64,7 @@ export class LookBuilderComponent {
       }
     }
     console.log('save outfit', outfit)
-    this.lookBuilderService.saveNewOutfit(outfit)
+    this.appApiService.saveNewOutfit(outfit)
       .subscribe(() => console.log("saved"))
   }
 
