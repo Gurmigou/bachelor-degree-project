@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {InterationType} from "./login.model";
 
 @Component({
   selector: 'app-login',
@@ -9,7 +8,6 @@ import {InterationType} from "./login.model";
 })
 export class LoginComponent {
   formGroup: FormGroup;
-  loginType: InterationType = InterationType.USER;
 
   constructor() {
     this.formGroup = new FormGroup({

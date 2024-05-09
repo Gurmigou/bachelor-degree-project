@@ -1,8 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {FilePreview} from "../../shared/app-common-model.model";
-import {CLOTHES_ELEMENT_TYPE, ClothesElement, OutfitClothes} from "./look-builder.model";
+import {CLOTHES_ELEMENT_TYPE, ClothesElement, Outfit, OutfitClothes} from "./look-builder.model";
 import {ImagesUploaderComponent} from "../../shared/images-uploader/images-uploader.component";
+import {LookBuilderService} from "./look-builder.service";
 
 @Component({
   selector: 'app-look-builder',
@@ -18,7 +19,8 @@ export class LookBuilderComponent {
 
   currentElementType: CLOTHES_ELEMENT_TYPE = CLOTHES_ELEMENT_TYPE.NOT_SELECTED;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private lookBuilderService: LookBuilderService) {
     // Form group for the whole outfit
     this.outfitFormGroup = this.fb.group({
       outfitName: [''],
@@ -45,7 +47,7 @@ export class LookBuilderComponent {
   }
 
   onSaveOutfit() {
-    const outfit = {
+    const outfit: Outfit = {
       name: this.outfitFormGroup.get('outfitName')?.value,
       tags: this.outfitFormGroup.get('tags')?.value,
       outfitClothes: {
@@ -57,6 +59,8 @@ export class LookBuilderComponent {
       }
     }
     console.log('save outfit', outfit)
+    this.lookBuilderService.saveNewOutfit(outfit)
+      .subscribe(() => console.log("saved"))
   }
 
   get tags(): FormArray {
@@ -83,7 +87,8 @@ export class LookBuilderComponent {
     const element: ClothesElement = {
       clothesElementName: this.elementFormGroup.get('outfitElementName')?.value,
       images: this.elementFormGroup.get('images')?.value,
-      description: this.elementFormGroup.get('description')?.value
+      description: this.elementFormGroup.get('description')?.value,
+      type: this.currentElementType
     }
     const formArray = this.currentFormArray;
     formArray.push(new FormControl(element));
