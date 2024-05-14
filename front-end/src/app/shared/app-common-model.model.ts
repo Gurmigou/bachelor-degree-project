@@ -26,6 +26,7 @@ export type ClothesElement = {
   images: FilePreview[],
   tags?: string[]
   description: string,
+  brand: string,
   type: CLOTHES_ELEMENT_TYPE
 }
 
@@ -60,8 +61,20 @@ export type OutfitClothesPreview = {
 }
 
 export type OutfitPreview = {
+  id: number,
   designerName: string,
   numberOfComments: number,
   rate: RATE,
+  isFavorite: boolean,
   outfitClothesPreview: OutfitClothesPreview
+}
+
+export type LabelCount = {
+  label: string,
+  count: number
+}
+
+export type PreviewFavorite = {
+  outfitId: number,
+  isFavorite: boolean
 }

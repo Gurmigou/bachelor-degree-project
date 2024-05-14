@@ -6,6 +6,7 @@ import com.degree.backendkotlin.dto.OutfitClothesDto
 import com.degree.backendkotlin.dto.OutfitDto
 import com.degree.backendkotlin.dto.preview.OutfitClothesPreviewDto
 import com.degree.backendkotlin.dto.preview.OutfitPreviewDto
+import com.degree.backendkotlin.dto.rate.PreviewFavoriteDto
 import com.degree.backendkotlin.model.*
 import com.degree.backendkotlin.repository.ClothesItemRepo
 import com.degree.backendkotlin.repository.ClothesPhotoRepo
@@ -61,6 +62,16 @@ class OutfitService @Autowired constructor(
         outfitRepository.delete(outfit)
     }
 
+
+    @Transactional
+    fun setIsFavorite(previewFavoriteDto: PreviewFavoriteDto) {
+        val outfit = outfitRepository.findById(previewFavoriteDto.outfitId).orElseThrow {
+            RuntimeException("Outfit not found with id: ${previewFavoriteDto.outfitId}")
+        }
+        outfit.isFavorite = previewFavoriteDto.isFavorite
+        outfitRepository.save(outfit)
+    }
+
     private fun updateTags(outfit: Outfit, newTags: List<String>) {
         outfitTagRepository.deleteAll(outfit.tags)
         val updatedTags = newTags.map { tagName ->
@@ -104,7 +115,8 @@ class OutfitService @Autowired constructor(
                 name = element.clothesElementName,
                 description = element.description,
                 type = type,
-                outfit = outfit
+                outfit = outfit,
+                brand = element.brand
             )
             clothesItem.photos = getPhotos(element.images, clothesItem)
             clothesItems.add(clothesItem)
@@ -115,7 +127,7 @@ class OutfitService @Autowired constructor(
     private fun getPhotos(images: List<FilePreviewDto>, clothesItem: ClothesItem): MutableList<ClothesPhoto> {
         val clothesPhotos = mutableListOf<ClothesPhoto>()
         images.forEach { image ->
-            clothesPhotos.add(ClothesPhoto(photo = image.preview, clothesItem = clothesItem))
+            clothesPhotos.add(ClothesPhoto(photo = image.preview.toByteArray(), clothesItem = clothesItem))
         }
         return clothesPhotos
     }
@@ -127,7 +139,8 @@ class OutfitService @Autowired constructor(
             id = outfit.id,
             name = outfit.name,
             tags = outfit.tags.map { it.tag },
-            outfitClothes = getOutfitClothes(outfit.clothesItems)
+            outfitClothes = getOutfitClothes(outfit.clothesItems),
+            isFavorite = outfit.isFavorite
         )
     }
 
@@ -157,14 +170,15 @@ class OutfitService @Autowired constructor(
             clothesElementName = clothesItem.name,
             description = clothesItem.description,
             images = getImages(clothesItem.photos),
-            type = clothesItem.type.toString()
+            type = clothesItem.type.toString(),
+            brand = clothesItem.brand
         )
     }
 
     private fun getImages(photos: List<ClothesPhoto>): List<FilePreviewDto> {
         val images = mutableListOf<FilePreviewDto>()
         photos.forEach { photo ->
-            images.add(FilePreviewDto(name = photo.photo, preview = photo.photo))
+            images.add(FilePreviewDto(name = "", preview = photo.photo.toString()))
         }
         return images
     }
@@ -182,10 +196,12 @@ class OutfitService @Autowired constructor(
     private fun getPreviewOutfits(outfits: List<Outfit>): List<OutfitPreviewDto> {
         return outfits.map { outfit ->
             OutfitPreviewDto(
+                id = outfit.id,
                 designerName = outfit.user.nickname,
                 numberOfComments = commentService.getNumberOfCommentsForOutfit(outfit),
                 rate = commentService.getAverageRateForOutfit(outfit),
-                outfitClothesPreviewDto = getOutfitClothesPreview(outfit.clothesItems)
+                outfitClothesPreview = getOutfitClothesPreview(outfit.clothesItems),
+                isFavorite = outfit.isFavorite
             )
         }
     }
@@ -200,25 +216,38 @@ class OutfitService @Autowired constructor(
         }
         return OutfitClothesPreviewDto(
             headdress = FilePreviewDto(
-                name = typeToPhotoMap[ClothesItemType.HEADDRESS] ?: "",
-                preview = typeToPhotoMap[ClothesItemType.HEADDRESS] ?: ""
+                name = "",
+                preview = String(typeToPhotoMap[ClothesItemType.HEADDRESS] ?: byteArrayOf(), Charsets.UTF_8)
             ),
             torso = FilePreviewDto(
-                name = typeToPhotoMap[ClothesItemType.TORSO] ?: "",
-                preview = typeToPhotoMap[ClothesItemType.TORSO] ?: ""
+                name = "",
+                preview = String(typeToPhotoMap[ClothesItemType.TORSO] ?: byteArrayOf(), Charsets.UTF_8)
             ),
             legwear = FilePreviewDto(
-                name = typeToPhotoMap[ClothesItemType.LEGWEAR] ?: "",
-                preview = typeToPhotoMap[ClothesItemType.LEGWEAR] ?: ""
+                name = "",
+                preview = String(typeToPhotoMap[ClothesItemType.LEGWEAR] ?: byteArrayOf(), Charsets.UTF_8)
             ),
             feet = FilePreviewDto(
-                name = typeToPhotoMap[ClothesItemType.FEET] ?: "",
-                preview = typeToPhotoMap[ClothesItemType.FEET] ?: ""
+                name = "",
+                preview = String(typeToPhotoMap[ClothesItemType.FEET] ?: byteArrayOf(), Charsets.UTF_8)
             ),
             accessories = FilePreviewDto(
-                name = typeToPhotoMap[ClothesItemType.ACCESSORIES] ?: "",
-                preview = typeToPhotoMap[ClothesItemType.ACCESSORIES] ?: ""
+                name = "",
+                preview = String(typeToPhotoMap[ClothesItemType.ACCESSORIES] ?: byteArrayOf(), Charsets.UTF_8)
             )
         )
+    }
+
+    fun getOutfitsByFilter(brands: Set<String>, tags: Set<String>): List<OutfitPreviewDto> {
+        return outfitRepository.findAllWithFilers(brands, tags).map { outfit ->
+            OutfitPreviewDto(
+                id = outfit.id,
+                designerName = outfit.user.nickname,
+                numberOfComments = commentService.getNumberOfCommentsForOutfit(outfit),
+                rate = commentService.getAverageRateForOutfit(outfit),
+                outfitClothesPreview = getOutfitClothesPreview(outfit.clothesItems),
+                isFavorite = outfit.isFavorite
+            )
+        }
     }
 }

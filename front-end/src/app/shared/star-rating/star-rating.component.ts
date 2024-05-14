@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import {RATE} from "../app-common-model.model";
 
 @Component({
   selector: 'app-star-rating',
@@ -8,15 +9,14 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from 
 })
 export class StarRatingComponent implements OnInit {
 
-  @Input('rating') rating: number = 3;
+  @Input('rating') rating: RATE | undefined = 1;
   @Input('starCount') starCount: number = 5;
+  @Input() clickable: boolean = false;
   @Output() private ratingUpdated = new EventEmitter();
 
   ratingArr: number[] = [];
 
-  constructor() {
-  }
-
+  constructor() { }
 
   ngOnInit() {
     for (let index = 0; index < this.starCount; index++) {
@@ -25,15 +25,19 @@ export class StarRatingComponent implements OnInit {
   }
 
   onClick(rating: number) {
-    this.ratingUpdated.emit(rating);
+    if (this.clickable) {
+      this.ratingUpdated.emit(rating);
+      this.rating = rating;
+    }
     return false;
   }
 
-  showIcon(index: number) {
-    if (this.rating >= index + 1) {
-      return 'star';
+  showIcon(index: number): string {
+    // @ts-ignore
+    if (this.rating?.valueOf() > index) {
+      return 'assets/images/star.svg';
     } else {
-      return 'star_border';
+      return 'assets/images/star_border.svg';
     }
   }
 }

@@ -11,5 +11,7 @@ class ClothesPhoto(
         @JoinColumn(name = "clothesItemId", nullable = false)
         val clothesItem: ClothesItem,
 
-        var photo: String
+        @Lob
+        @Column(name = "photo", columnDefinition = "LONGBLOB")
+        var photo: ByteArray
 )

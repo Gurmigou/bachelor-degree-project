@@ -1,6 +1,6 @@
 <div class="container">
-  <span *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i">
-    <img src="assets/images/star.svg" alt="">
+  <span *ngFor="let star of ratingArr; let i = index" (click)="onClick(i + 1)">
+    <img [src]="showIcon(i)" alt="">
   </span>
 </div>
 <mat-error *ngIf="starCount == null || starCount == 0">

@@ -47,7 +47,8 @@ export class LookBuilderComponent {
     return this.fb.group({
       outfitElementName: [''],
       images: this.fb.array([]),
-      description: ['']
+      description: [''],
+      brand: ['']
     });
   }
 
@@ -92,6 +93,7 @@ export class LookBuilderComponent {
     const element: ClothesElement = {
       clothesElementName: this.elementFormGroup.get('outfitElementName')?.value,
       images: this.elementFormGroup.get('images')?.value,
+      brand: this.elementFormGroup.get('brand')?.value,
       description: this.elementFormGroup.get('description')?.value,
       type: this.currentElementType
     }

@@ -35,6 +35,9 @@
         <input matInput placeholder="Clothes element name" formControlName="outfitElementName">
       </mat-form-field>
       <app-images-uploader #appImagesUploader (updateImageEmitter)="updateElementImages($event)"></app-images-uploader>
+      <mat-form-field>
+        <input matInput placeholder="Brand name" formControlName="brand">
+      </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Clothes description</mat-label>
         <textarea formControlName="description" matInput

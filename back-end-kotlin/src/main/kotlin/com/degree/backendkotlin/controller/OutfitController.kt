@@ -1,10 +1,13 @@
 package com.degree.backendkotlin.controller
 
 import com.degree.backendkotlin.dto.CommentDto
+import com.degree.backendkotlin.dto.FilterDto
 import com.degree.backendkotlin.dto.OutfitDto
 import com.degree.backendkotlin.dto.preview.OutfitPreviewDto
+import com.degree.backendkotlin.dto.rate.PreviewFavoriteDto
 import com.degree.backendkotlin.serivce.CommentService
 import com.degree.backendkotlin.serivce.OutfitService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/outfits")
 class OutfitController(
+    @Autowired
     private val outfitService: OutfitService,
     private val commentService: CommentService
 ) {
@@ -61,5 +65,17 @@ class OutfitController(
     @GetMapping("/all-preview-user")
     fun getAllOutfitsPreviewForUser(@RequestParam userId: Long): List<OutfitPreviewDto> {
         return outfitService.getAllOutfitsPreviewForUser(userId)
+    }
+
+    @GetMapping("/all-preview-filters")
+    fun getAllOutfitsPreviewWithFilters(@RequestParam brands: Set<String>,
+                                        @RequestParam tags: Set<String>): List<OutfitPreviewDto> {
+        return outfitService.getOutfitsByFilter(brands, tags)
+    }
+
+    @PutMapping("/favorite")
+    @ResponseStatus(HttpStatus.OK)
+    fun favoriteOutfit(@RequestBody previewFavoriteDto: PreviewFavoriteDto) {
+        outfitService.setIsFavorite(previewFavoriteDto);
     }
 }

@@ -11,6 +11,8 @@ class ClothesItem(
 
         var description: String,
 
+        var brand: String,
+
         @Enumerated(EnumType.STRING)
         @Column(nullable = false)
         var type: ClothesItemType,

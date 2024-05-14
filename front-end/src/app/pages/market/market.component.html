@@ -2,11 +2,11 @@
   <div class="left-filters">
     <div>Filters</div>
     <div class="filters">
-      <app-filter [filterLabel]="'Brands'" [options]="['Nike', 'Adidas', 'Puma']"></app-filter>
-      <app-filter [filterLabel]="'Brands'" [options]="['Nike', 'Adidas', 'Puma']"></app-filter>
+      <app-filter [filterLabel]="'Brands'" [options]="convertToStrings(brands)" (selectionChange)="onBrandSelectionChange($event)"></app-filter>
+      <app-filter [filterLabel]="'Tags'" [options]="convertToStrings(tags)" (selectionChange)="onTagSelectionChange($event)"></app-filter>
     </div>
     <hr/>
-    <button class="apply-filters" mat-button>
+    <button class="apply-filters" mat-button (click)="onApplyFilters()">
       Apply filters
     </button>
   </div>
@@ -15,18 +15,7 @@
       <app-search></app-search>
     </div>
     <div class="look-cards">
-      <app-look-card></app-look-card>
-      <app-look-card></app-look-card>
-      <app-look-card></app-look-card>
-      <app-look-card></app-look-card>
-      <app-look-card></app-look-card>
-      <app-look-card></app-look-card>
-      <app-look-card></app-look-card>
-      <app-look-card></app-look-card>
-      <app-look-card></app-look-card>
-      <app-look-card></app-look-card>
+      <app-look-card *ngFor="let outfitPreview of outfitPreviews" [outfitPreview]="outfitPreview"></app-look-card>
     </div>
   </div>
-
 </div>
-

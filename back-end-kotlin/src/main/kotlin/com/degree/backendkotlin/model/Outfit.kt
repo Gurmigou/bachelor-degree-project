@@ -9,6 +9,8 @@ class Outfit(
 
         var name: String,
 
+        var isFavorite: Boolean = false,
+
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "userId", nullable = false)
         var user: User,
