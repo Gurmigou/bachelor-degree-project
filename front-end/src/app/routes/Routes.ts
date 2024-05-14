@@ -13,7 +13,7 @@ export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'sign-up', component: RegistrationComponent},
   {path: 'market', component: MarketComponent},
-  {path: 'look-details', component: LookDetailsComponent},
+  {path: 'look-details/:outfitId', component: LookDetailsComponent},
   {path: 'builder', component: LookBuilderComponent},
   {path: 'my-works', component: MyWorksComponent},
   {path: 'favorites', component: FavoritesComponent},

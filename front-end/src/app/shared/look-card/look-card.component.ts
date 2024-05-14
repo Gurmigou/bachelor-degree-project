@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {OutfitPreview} from "../app-common-model.model";
 import {AppApiService} from "../../service/app-api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-look-card',
@@ -14,7 +15,8 @@ export class LookCardComponent {
   @Input()
   outfitPreview: OutfitPreview | undefined;
 
-  constructor(private appApiService: AppApiService) {
+  constructor(private appApiService: AppApiService,
+              private router: Router) {
   }
 
   onRateChange(isFavorite: boolean) {
@@ -23,5 +25,11 @@ export class LookCardComponent {
       this.outfitPreview.isFavorite = isFavorite;
     }
     this.appApiService.makeOutfitFavoriteState(this.outfitPreview?.id, isFavorite).subscribe()
+  }
+
+  redirectToOutfitDetailedInfo() {
+    if (this.outfitPreview) {
+      this.router.navigate(["/look-details", this.outfitPreview.id]);
+    }
   }
 }

@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card (click)="redirectToOutfitDetailedInfo()">
   <mat-card-content>
     <ng-container *ngIf="favoritesButton">
       <ng-container *ngIf="outfitPreview?.isFavorite">

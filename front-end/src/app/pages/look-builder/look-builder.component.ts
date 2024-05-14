@@ -9,6 +9,7 @@ import {
 } from "../../shared/app-common-model.model";
 import {ImagesUploaderComponent} from "../../shared/images-uploader/images-uploader.component";
 import {AppApiService} from "../../service/app-api.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-look-builder',
@@ -25,7 +26,8 @@ export class LookBuilderComponent {
   currentElementType: CLOTHES_ELEMENT_TYPE = CLOTHES_ELEMENT_TYPE.NOT_SELECTED;
 
   constructor(private fb: FormBuilder,
-              private appApiService: AppApiService) {
+              private appApiService: AppApiService,
+              private router: Router) {
     // Form group for the whole outfit
     this.outfitFormGroup = this.fb.group({
       outfitName: [''],
@@ -64,9 +66,12 @@ export class LookBuilderComponent {
         accessories: this.outfitFormGroup.get('outfitClothes.accessories')?.value
       }
     }
-    console.log('save outfit', outfit)
     this.appApiService.saveNewOutfit(outfit)
-      .subscribe(() => console.log("saved"))
+      .subscribe(() => {
+          console.log('after save')
+          this.router.navigate(["/my-works"])
+        }
+      )
   }
 
   get tags(): FormArray {
@@ -82,8 +87,6 @@ export class LookBuilderComponent {
   }
 
   public updateElementImages(files: FilePreview[]) {
-    console.log('in update: files', files, 'length', files.length)
-    console.log(typeof files)
     files.forEach(file => {
       this.elementImages.push(new FormControl(file));
     });
@@ -114,7 +117,6 @@ export class LookBuilderComponent {
   }
 
   onDeleteClothesItem($event: { type: CLOTHES_ELEMENT_TYPE, index: number }) {
-    console.log('delete item', $event)
     const elementType = $event.type.toLowerCase();
     const formArray = (this.outfitFormGroup.get('outfitClothes') as FormGroup)
       .get(elementType) as FormArray;
