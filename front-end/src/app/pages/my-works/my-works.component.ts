@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import {AppModule} from "../../app.module";
+import {Component} from '@angular/core';
+import {OutfitPreview} from "../../shared/app-common-model.model";
+import {AppApiService} from "../../service/app-api.service";
 
 @Component({
   selector: 'app-my-works',
@@ -7,5 +8,14 @@ import {AppModule} from "../../app.module";
   styleUrl: './my-works.component.css'
 })
 export class MyWorksComponent {
+  myOutfitPreviews: OutfitPreview[] = [];
 
+  constructor(private appApiService: AppApiService) {
+    // TODO: get userId from the session
+    const userId = 1;
+    this.appApiService.getAllOutfitsPreviewForUser(userId)
+      .subscribe(outfitPreviews => {
+        this.myOutfitPreviews = outfitPreviews;
+      });
+  }
 }

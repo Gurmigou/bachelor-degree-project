@@ -7,6 +7,7 @@ import {LookDetailsComponent} from "../pages/look-details/look-details.component
 import {LookBuilderComponent} from "../pages/look-builder/look-builder.component";
 import {MyWorksComponent} from "../pages/my-works/my-works.component";
 import {FavoritesComponent} from "../pages/favorites/favorites.component";
+import {MagicSearchComponent} from "../pages/magic-search/magic-search.component";
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -16,5 +17,6 @@ export const routes: Routes = [
   {path: 'builder', component: LookBuilderComponent},
   {path: 'my-works', component: MyWorksComponent},
   {path: 'favorites', component: FavoritesComponent},
+  {path : 'magic-search', component: MagicSearchComponent},
   {path: '**', component: NotFoundComponent},
 ];

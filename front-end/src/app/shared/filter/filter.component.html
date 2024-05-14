@@ -4,9 +4,6 @@
       {{ filterLabel }}
     </mat-expansion-panel-header>
     <div class="filter-container">
-      <div class="filter-label">
-        {{ filterLabel }}
-      </div>
       <mat-selection-list #selectionList (selectionChange)="onSelectionChange($event)">
         <mat-list-option *ngFor="let option of options" [value]="option">{{ option }}</mat-list-option>
       </mat-selection-list>

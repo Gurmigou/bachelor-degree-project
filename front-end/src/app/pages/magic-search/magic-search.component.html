@@ -1,0 +1,19 @@
+<div class="magic-search-container">
+  <div class="left-search-bar">
+    <div>Magic search</div>
+    <app-images-uploader></app-images-uploader>
+    <button class="apply-filters" mat-button (click)="onApplyMagicSearch()">
+      Apply search
+    </button>
+  </div>
+  <div class="right-content">
+    <div class="look-cards">
+      <ng-container *ngIf="!outfitPreviews.length">
+        <div class="no-results">No results or no photos uploaded.</div>
+      </ng-container>
+      <ng-container *ngIf="outfitPreviews">
+        <app-look-card *ngFor="let outfitPreview of outfitPreviews" [outfitPreview]="outfitPreview"></app-look-card>
+      </ng-container>
+    </div>
+  </div>
+</div>
