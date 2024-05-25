@@ -1,7 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {LabelCount, Outfit, OutfitPreview, PreviewFavorite} from "../shared/app-common-model.model";
+import {
+  LabelCount,
+  Outfit,
+  OutfitComment,
+  OutfitDetails,
+  OutfitPreview,
+  PreviewFavorite
+} from "../shared/app-common-model.model";
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +39,8 @@ export class AppApiService {
       `${AppApiService.HOST}/outfits`, {params: {outfitId}});
   }
 
-  public getOutfitById(id: number): Observable<Outfit> {
-    return this.httpClient.get<Outfit>(
+  public getOutfitById(id: number): Observable<OutfitDetails> {
+    return this.httpClient.get<OutfitDetails>(
       `${AppApiService.HOST}/outfits/${id}`);
   }
 
@@ -67,8 +74,13 @@ export class AppApiService {
       `${AppApiService.HOST}/static/tags`);
   }
 
-  makeOutfitFavoriteState(id: number | undefined, isFavorite: boolean) {
+  public makeOutfitFavoriteState(id: number | undefined, isFavorite: boolean) {
     const favorite: PreviewFavorite = {outfitId: id!, isFavorite: isFavorite};
     return this.httpClient.put(`${AppApiService.HOST}/outfits/favorite`, favorite);
+  }
+
+  public saveNewComment(outfitComment: OutfitComment, outfitId: number): Observable<OutfitComment> {
+    return this.httpClient.post<OutfitComment>(
+      `${AppApiService.HOST}/outfits/${outfitId}/comments`, outfitComment);
   }
 }

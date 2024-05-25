@@ -1,0 +1,22 @@
+.comment-builder-wrapper {
+  padding: 1rem;
+
+  textarea {
+    min-height: 100px;
+  }
+
+  .comment-lower-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .comment-rate {
+      width: 140px;
+    }
+
+    button {
+      font-size: 14px;
+    }
+  }
+}
+

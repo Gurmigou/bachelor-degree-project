@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import {RATE} from "../app-common-model.model";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-star-rating',
@@ -12,7 +13,7 @@ export class StarRatingComponent implements OnInit {
   @Input('rating') rating: RATE | undefined = 1;
   @Input('starCount') starCount: number = 5;
   @Input() clickable: boolean = false;
-  @Output() private ratingUpdated = new EventEmitter();
+  @Output() private ratingUpdated = new EventEmitter<number>();
 
   ratingArr: number[] = [];
 

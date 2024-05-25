@@ -1,0 +1,17 @@
+<mat-card class="comment-builder-wrapper" [formGroup]="formGroup">
+  <mat-form-field class="example-full-width">
+    <mat-label>New comment</mat-label>
+    <textarea formControlName="commentText" matInput
+              placeholder="Ex. I really like this outfit...">
+  </textarea>
+  </mat-form-field>
+  <div class="comment-lower-container">
+    <app-star-rating class="comment-rate"
+                     (ratingUpdated)="onRateUpdate($event)"
+                     [rating]="RATE.STAR_0"
+                     [clickable]="true"/>
+    <button mat-raised-button type="submit" class="nav-links-button" (click)="onSaveComment()">
+      Save
+    </button>
+  </div>
+</mat-card>

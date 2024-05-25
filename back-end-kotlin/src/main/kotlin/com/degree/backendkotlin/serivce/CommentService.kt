@@ -18,21 +18,24 @@ class CommentService @Autowired constructor(
     private val commentRepository: CommentRepo,
     private val userService: UserService
 ) {
-
     @Transactional
-    fun addCommentToOutfit(outfitId: Long, commentDto: CommentDto) {
-        val outfit = outfitRepository.findById(outfitId).orElseThrow {
-            RuntimeException("Outfit not found with id: $outfitId")
-        }
+    fun saveNewComment(commentDto: CommentDto, outfitId: Long, userId: Long): CommentDto? {
+        val outfit = outfitRepository.findById(outfitId).orElse(null)
         val comment = Comment(
             commentText = commentDto.commentText,
-            user = userService.getUser(commentDto.userId),
-            outfit = outfit,
+            user = userService.getUser(userId),
+            outfit = outfit!!,
             rate = commentDto.rate,
             dateOfCreation = LocalDateTime.now()
         )
-        outfit.comments.add(comment)
-        outfitRepository.save(outfit)
+        val savedComment = commentRepository.save(comment)
+        return CommentDto(
+            savedComment.user.id,
+            savedComment.user.nickname,
+            savedComment.commentText,
+            savedComment.rate,
+            savedComment.dateOfCreation
+        )
     }
 
     fun getNumberOfCommentsForOutfit(outfit: Outfit): Long {
@@ -43,5 +46,18 @@ class CommentService @Autowired constructor(
         return Rate.getByLongStart(floor(commentRepository.getCommentsByOutfitId(outfit.id)
             .map { comment -> comment.rate.ordinal + 1 }
             .average()).toLong())
+    }
+
+    fun getCommentsByOutfitId(outfitId: Long): List<CommentDto> {
+        return commentRepository.getCommentsByOutfitId(outfitId)
+            .map { comment ->
+                CommentDto(
+                    comment.user.id,
+                    comment.user.nickname,
+                    comment.commentText,
+                    comment.rate,
+                    comment.dateOfCreation
+                )
+            }
     }
 }

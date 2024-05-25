@@ -51,6 +51,7 @@ import {MyWorksComponent} from "./pages/my-works/my-works.component";
 import {EditableLookCardComponent} from "./shared/editable-look-card/editable-look-card.component";
 import {FavoritesComponent} from "./pages/favorites/favorites.component";
 import {MagicSearchComponent} from "./pages/magic-search/magic-search.component";
+import {CommentBuilderComponent} from "./shared/comment/comment-builder/comment-builder.component";
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import {MagicSearchComponent} from "./pages/magic-search/magic-search.component"
     MyWorksComponent,
     EditableLookCardComponent,
     FavoritesComponent,
-    MagicSearchComponent
+    MagicSearchComponent,
+    CommentBuilderComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,

@@ -1,9 +1,7 @@
 package com.degree.backendkotlin.serivce
 
-import com.degree.backendkotlin.dto.ClothesElementDto
-import com.degree.backendkotlin.dto.FilePreviewDto
-import com.degree.backendkotlin.dto.OutfitClothesDto
-import com.degree.backendkotlin.dto.OutfitDto
+import com.degree.backendkotlin.dto.*
+import com.degree.backendkotlin.dto.details.OutfitDetailsDto
 import com.degree.backendkotlin.dto.preview.OutfitClothesPreviewDto
 import com.degree.backendkotlin.dto.preview.OutfitPreviewDto
 import com.degree.backendkotlin.dto.rate.PreviewFavoriteDto
@@ -132,15 +130,19 @@ class OutfitService @Autowired constructor(
         return clothesPhotos
     }
 
-    fun getOutfitById(outfitId: Long): OutfitDto {
+    fun getOutfitById(outfitId: Long): OutfitDetailsDto {
         val outfit =
             outfitRepository.findById(outfitId).orElseThrow { RuntimeException("Outfit not found with id: $outfitId") }
-        return OutfitDto(
+        return OutfitDetailsDto(
             id = outfit.id,
             name = outfit.name,
             tags = outfit.tags.map { it.tag },
             outfitClothes = getOutfitClothes(outfit.clothesItems),
-            isFavorite = outfit.isFavorite
+            comments = commentService.getCommentsByOutfitId(outfitId),
+            designerName = outfit.user.nickname,
+            isFavorite = outfit.isFavorite,
+            rate = commentService.getAverageRateForOutfit(outfit),
+            numberOfComments = commentService.getNumberOfCommentsForOutfit(outfit)
         )
     }
 
@@ -178,7 +180,12 @@ class OutfitService @Autowired constructor(
     private fun getImages(photos: List<ClothesPhoto>): List<FilePreviewDto> {
         val images = mutableListOf<FilePreviewDto>()
         photos.forEach { photo ->
-            images.add(FilePreviewDto(name = "", preview = photo.photo.toString()))
+            images.add(
+                FilePreviewDto(
+                    name = "",
+                    preview = String(photo.photo, Charsets.UTF_8)
+                )
+            )
         }
         return images
     }

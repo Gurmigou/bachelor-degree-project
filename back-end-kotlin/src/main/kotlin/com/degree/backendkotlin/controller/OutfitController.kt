@@ -1,6 +1,7 @@
 package com.degree.backendkotlin.controller
 
 import com.degree.backendkotlin.dto.CommentDto
+import com.degree.backendkotlin.dto.details.OutfitDetailsDto
 import com.degree.backendkotlin.dto.OutfitDto
 import com.degree.backendkotlin.dto.preview.OutfitPreviewDto
 import com.degree.backendkotlin.dto.rate.PreviewFavoriteDto
@@ -31,7 +32,7 @@ class OutfitController(
         @PathVariable outfitId: Long,
         @RequestBody commentDto: CommentDto
     ) {
-        commentService.addCommentToOutfit(outfitId, commentDto)
+        commentService.saveNewComment(commentDto, outfitId, 1L)
     }
 
     @PutMapping
@@ -47,7 +48,7 @@ class OutfitController(
     }
 
     @GetMapping("/{id}")
-    fun getOutfitById(@PathVariable id: Long): OutfitDto {
+    fun getOutfitById(@PathVariable id: Long): OutfitDetailsDto {
         return outfitService.getOutfitById(id)
     }
 

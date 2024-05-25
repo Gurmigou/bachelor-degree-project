@@ -4,16 +4,26 @@
   .look-type-label {
     font-size: 18px;
     font-weight: bold;
+    margin-bottom: 10px;
   }
 
   .look-images {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
 
     img {
       height: 15rem;
       width: auto;
       object-fit: contain;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    img:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.09);
     }
   }
 }

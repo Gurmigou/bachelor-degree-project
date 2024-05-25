@@ -3,25 +3,25 @@
     <div class="top-info-container">
       <div class="left-info">
         <div class="look-label">
-          Old money summer style
+          {{ outfit?.name }}
         </div>
         <div class="tags-list">
-          <app-tag [label]="'summer'"></app-tag>
-          <app-tag [label]="'old_money'"></app-tag>
-          <app-tag [label]="'classical'"></app-tag>
+          <app-tag [label]="tag" *ngFor="let tag of outfit?.tags"></app-tag>
         </div>
       </div>
       <div class="right-info">
         <div class="rating">
-          <app-star-rating [rating]="4"></app-star-rating>
+          <app-star-rating [rating]="outfit?.rate"></app-star-rating>
         </div>
         <div class="designed-by">
-          Designed by <br/> #YehorBukhanets
+          Designed by <br/> #{{ outfit?.designerName }}
         </div>
       </div>
     </div>
     <div class="look-clothes-preview">
-      <app-look-preview></app-look-preview>
+      <app-look-preview [outfitClothes]="outfit?.outfitClothes"
+      (selectClothesElementEmitter)="onSelectClothesElement($event)">
+      </app-look-preview>
     </div>
     <mat-accordion>
       <mat-expansion-panel>
@@ -29,26 +29,26 @@
           Comments
         </mat-expansion-panel-header>
         <div class="comments">
-          <app-comment></app-comment>
-          <app-comment></app-comment>
-          <app-comment></app-comment>
-          <app-comment></app-comment>
-          <app-comment></app-comment>
+          <app-comment-builder (onSaveNewComment)="onSaveNewComment($event)"></app-comment-builder>
+          <app-comment [outfitComment]="comment" *ngFor="let comment of outfit?.comments">
+          </app-comment>
         </div>
       </mat-expansion-panel>
     </mat-accordion>
   </div>
   <div class="look-details-right-container">
-    <div class="right-details-header">
-      <div class="label">
-        Only & Sons Hat
+    <ng-container *ngIf="currentClothesElement">
+      <div class="right-details-header">
+        <div class="label">
+          {{currentClothesElement.clothesElementName}}
+        </div>
+        <div class="buy-this-good">
+          {{currentClothesElement.brand}}
+        </div>
       </div>
-      <div class="buy-this-good">
-        Buy this good!
+      <div class="details-carousel">
+        <app-img-carousel [images]="getCurrentClothesElementImages()"></app-img-carousel>
       </div>
-    </div>
-    <div class="details-carousel">
-      <app-img-carousel [images]="['https://content.rozetka.com.ua/goods/images/big/332071922.jpg']"></app-img-carousel>
-    </div>
+    </ng-container>
   </div>
 </div>

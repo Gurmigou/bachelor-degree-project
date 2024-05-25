@@ -10,7 +10,9 @@ class UserService @Autowired constructor(
     private val userRepository: UserRepo
 ) {
 
-    fun getUser(userId: Long): User {
+    fun getUser(userId: Long?): User {
+        if (userId == null)
+            throw RuntimeException("User id is null")
         return userRepository.findById(userId).orElseThrow {
             RuntimeException("User not found with id: $userId")
         }

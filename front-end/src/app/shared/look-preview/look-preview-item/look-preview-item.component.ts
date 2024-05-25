@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-look-preview-item',
@@ -10,5 +10,12 @@ export class LookPreviewItemComponent {
   typeLabel: string = "";
 
   @Input()
-  images: string[] = [];
+  images: [number, string][] = [];
+
+  @Output()
+  selectClothesElementById = new EventEmitter<number>()
+
+  onImageClick(clothesElementId: number): void {
+    this.selectClothesElementById.emit(clothesElementId)
+  }
 }

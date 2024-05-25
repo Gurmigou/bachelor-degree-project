@@ -22,6 +22,7 @@ export enum RATE {
 }
 
 export type ClothesElement = {
+  id?: number,
   clothesElementName: string,
   images: FilePreview[],
   tags?: string[]
@@ -46,10 +47,18 @@ export type OutfitComment = {
 }
 
 export type Outfit = {
+  id?: number
   name: string,
   tags: string[],
   outfitClothes: OutfitClothes,
-  comments?: OutfitComment[]
+}
+
+export type OutfitDetails = Outfit & {
+  comments?: OutfitComment[],
+  designerName: string,
+  isFavorite: boolean,
+  rate: RATE,
+  numberOfComments: number
 }
 
 export type OutfitClothesPreview = {
@@ -77,4 +86,23 @@ export type LabelCount = {
 export type PreviewFavorite = {
   outfitId: number,
   isFavorite: boolean
+}
+
+export function convertToRateEnum(rating: number): RATE {
+  switch (rating) {
+    case 0:
+      return RATE.STAR_0;
+    case 1:
+      return RATE.STAR_1;
+    case 2:
+      return RATE.STAR_2;
+    case 3:
+      return RATE.STAR_3;
+    case 4:
+      return RATE.STAR_4;
+    case 5:
+      return RATE.STAR_5;
+    default:
+      throw new Error("Invalid rating");
+  }
 }
