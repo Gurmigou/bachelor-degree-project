@@ -8,7 +8,7 @@
   <div class="comment-lower-container">
     <app-star-rating class="comment-rate"
                      (ratingUpdated)="onRateUpdate($event)"
-                     [rating]="RATE.STAR_0"
+                     [rating]="rate"
                      [clickable]="true"/>
     <button mat-raised-button type="submit" class="nav-links-button" (click)="onSaveComment()">
       Save

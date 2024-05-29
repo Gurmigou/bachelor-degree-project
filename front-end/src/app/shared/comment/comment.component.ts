@@ -9,4 +9,12 @@ import {OutfitComment} from "../app-common-model.model";
 export class CommentComponent {
   @Input()
   outfitComment: OutfitComment | undefined
+
+  getFormattedDate(dateOfCreation: Date | undefined) {
+    if (!dateOfCreation) {
+      return ''
+    }
+    const date = new Date(dateOfCreation)
+    return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+  }
 }

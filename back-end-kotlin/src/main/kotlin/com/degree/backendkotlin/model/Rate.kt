@@ -1,12 +1,14 @@
 package com.degree.backendkotlin.model
 
-enum class Rate {
-    STAR_0,
-    STAR_1,
-    STAR_2,
-    STAR_3,
-    STAR_4,
-    STAR_5;
+import com.fasterxml.jackson.annotation.JsonValue
+
+enum class Rate(val value: Long) {
+    STAR_0(0),
+    STAR_1(1),
+    STAR_2(2),
+    STAR_3(3),
+    STAR_4(4),
+    STAR_5(5);
 
     companion object {
         fun getByLongStart(longValue: Long): Rate {
@@ -16,9 +18,14 @@ enum class Rate {
                 2L -> STAR_2
                 3L -> STAR_3
                 4L -> STAR_4
-                5L -> STAR_5
+                5L, 6L -> STAR_5
                 else -> throw RuntimeException("Rate not found with value: $longValue")
             }
         }
+    }
+
+    @JsonValue
+    fun toValue(): Long {
+        return value
     }
 }

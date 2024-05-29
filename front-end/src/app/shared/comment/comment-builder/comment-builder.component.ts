@@ -33,5 +33,10 @@ export class CommentBuilderComponent {
 
   private clearForm() {
     this.formGroup.reset();
+    this.formGroup.get("rate")?.setValue(RATE.STAR_0);
+  }
+
+  get rate(): RATE {
+    return this.formGroup.get("rate")?.value;
   }
 }

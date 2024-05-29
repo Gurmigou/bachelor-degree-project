@@ -9,6 +9,7 @@ import com.degree.backendkotlin.serivce.CommentService
 import com.degree.backendkotlin.serivce.OutfitService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @CrossOrigin("*")
@@ -31,8 +32,9 @@ class OutfitController(
     fun addCommentToOutfit(
         @PathVariable outfitId: Long,
         @RequestBody commentDto: CommentDto
-    ) {
-        commentService.saveNewComment(commentDto, outfitId, 1L)
+    ): ResponseEntity<CommentDto> {
+        val savedCommentDto = commentService.saveNewComment(commentDto, outfitId, 1L)
+        return ResponseEntity.ok(savedCommentDto)
     }
 
     @PutMapping

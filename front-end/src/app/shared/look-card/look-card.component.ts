@@ -13,14 +13,20 @@ export class LookCardComponent {
   favoritesButton: boolean = true;
 
   @Input()
+  deletable: boolean = false;
+
+  @Input()
+  editable: boolean = false;
+
+  @Input()
   outfitPreview: OutfitPreview | undefined;
 
   constructor(private appApiService: AppApiService,
               private router: Router) {
   }
 
-  onRateChange(isFavorite: boolean) {
-    console.log('onRateChange', isFavorite);
+  onRateChange(isFavorite: boolean, $event: Event) {
+    $event.stopPropagation()
     if (this.outfitPreview) {
       this.outfitPreview.isFavorite = isFavorite;
     }

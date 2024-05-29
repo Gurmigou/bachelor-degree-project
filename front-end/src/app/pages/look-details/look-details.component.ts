@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {AppApiService} from "../../service/app-api.service";
-import {ClothesElement, Outfit, OutfitComment, OutfitDetails} from "../../shared/app-common-model.model";
+import {ClothesElement, OutfitComment, OutfitDetails} from "../../shared/app-common-model.model";
 import {concatMap, map, tap} from "rxjs";
 
 @Component({
@@ -41,6 +41,7 @@ export class LookDetailsComponent implements OnInit {
   onSaveNewComment(outfitComment: OutfitComment) {
     this.apiService.saveNewComment(outfitComment, this.outfitId!!)
       .subscribe(newComment =>
-        this.outfit?.comments?.push(newComment));
+        this.outfit!!.comments = [...this.outfit?.comments!!, newComment]
+      )
   }
 }
