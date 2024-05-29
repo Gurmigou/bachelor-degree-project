@@ -9,7 +9,7 @@ export enum CLOTHES_ELEMENT_TYPE {
   LEGWEAR = 'Legwear',
   FEET = 'Feet',
   ACCESSORIES = 'Accessories',
-  NOT_SELECTED = 'Not selected'
+  NOT_SELECTED = 'not selected'
 }
 
 export enum RATE {

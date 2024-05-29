@@ -40,15 +40,10 @@ import {CommentComponent} from "./shared/comment/comment.component";
 import {LookBuilderComponent} from "./pages/look-builder/look-builder.component";
 import {TagListBuilderComponent} from "./shared/tag-list-builder/tag-list-builder.component";
 import {LookPreviewBuilderComponent} from "./shared/look-preview-builder/look-preview-builder.component";
-import {
-  AppLookPreviewBuilderItemComponent
-} from "./shared/look-preview-builder/app-look-preview-builder-item/app-look-preview-builder-item.component";
+import {AppLookPreviewBuilderItemComponent} from "./shared/look-preview-builder/app-look-preview-builder-item/app-look-preview-builder-item.component";
 import {ImagesUploaderComponent} from "./shared/images-uploader/images-uploader.component";
-import {
-  LookPreviewBuilderItemCardComponent
-} from "./shared/look-preview-builder/app-look-preview-builder-item/look-preview-builder-item-card/look-preview-builder-item-card.component";
+import {LookPreviewBuilderItemCardComponent} from "./shared/look-preview-builder/app-look-preview-builder-item/look-preview-builder-item-card/look-preview-builder-item-card.component";
 import {MyWorksComponent} from "./pages/my-works/my-works.component";
-import {EditableLookCardComponent} from "./shared/editable-look-card/editable-look-card.component";
 import {FavoritesComponent} from "./pages/favorites/favorites.component";
 import {MagicSearchComponent} from "./pages/magic-search/magic-search.component";
 import {CommentBuilderComponent} from "./shared/comment/comment-builder/comment-builder.component";
@@ -79,7 +74,6 @@ import {CommentBuilderComponent} from "./shared/comment/comment-builder/comment-
     ImagesUploaderComponent,
     LookPreviewBuilderItemCardComponent,
     MyWorksComponent,
-    EditableLookCardComponent,
     FavoritesComponent,
     MagicSearchComponent,
     CommentBuilderComponent

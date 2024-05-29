@@ -16,4 +16,12 @@ export class FavoritesComponent {
         this.favoriteOutfits = outfitPreviews.filter(outfitPreview => outfitPreview.isFavorite);
       });
   }
+
+  onDeleteFromFavorites(outfitId: number) {
+    this.appApiService.makeOutfitFavoriteState(outfitId, false)
+      .subscribe(() => {
+        this.favoriteOutfits = this.favoriteOutfits
+          .filter(outfit => outfit.id !== outfitId);
+      });
+  }
 }

@@ -13,14 +13,14 @@
           </button>
         </ng-container>
       </ng-container>
-      <ng-container *ngIf="deletable">
-        <button mat-icon-button class="delete-btn">
-          <img src="assets/images/delete.svg" alt="">
+      <ng-container *ngIf="editable">
+        <button mat-icon-button class="edit-svg" (click)="onEditClick($event)">
+          <img src="assets/images/edit.svg" alt="">
         </button>
       </ng-container>
-      <ng-container *ngIf="editable">
-        <button mat-icon-button class="edit-svg">
-          <img src="assets/images/edit.svg" alt="">
+      <ng-container *ngIf="deletable">
+        <button mat-icon-button class="delete-btn" (click)="onDeleteClick($event)">
+          <img src="assets/images/delete.svg" alt="">
         </button>
       </ng-container>
     </div>

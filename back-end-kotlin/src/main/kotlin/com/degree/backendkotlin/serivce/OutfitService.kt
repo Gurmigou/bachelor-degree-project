@@ -257,4 +257,12 @@ class OutfitService @Autowired constructor(
             )
         }
     }
+
+    fun deleteFromFavorites(outfitId: Long) {
+        val outfit = outfitRepository.findById(outfitId).orElseThrow {
+            RuntimeException("Outfit not found with id: $outfitId")
+        }
+        outfit.isFavorite = false
+        outfitRepository.save(outfit)
+    }
 }
